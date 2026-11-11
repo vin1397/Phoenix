@@ -46,3 +46,7 @@ desktop.ini
 *.tmp
 *.bak
 *.swp
+
+#others....
+.freebuff
+data/*
