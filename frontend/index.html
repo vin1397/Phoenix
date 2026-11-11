@@ -1566,7 +1566,7 @@
             }
 
             function initVoiceInput() {
-                console.log("Recognition created:", recognition);
+                
                 recognition = createSpeechRecognition(
                     async (transcript) => {
                         isVoiceListening = false;
@@ -1597,6 +1597,7 @@
                     }
                     setVoiceStatus("Voice input unavailable in this browser.");
                 }
+                console.log("Recognition created:", recognition);
             }
 
             async function sendVoiceMessage(text) {
@@ -1772,6 +1773,12 @@
                 );
             }
             initVoiceInput();
+            console.log("BUTTON FOUND:",
+            document.getElementById("voice-listen-btn")
+            );
+            document.getElementById("voice-listen-btn").onclick
+            getEventListeners(document.getElementById("voice-listen-btn"))
+            
 
             // Auto-resize textarea
             inputEl.addEventListener("input", () => {

@@ -1,46 +1,29 @@
-<<<<<<< HEAD
-# =========================
 # Phoenix Core
-# =========================
 flask>=2.3
 requests>=2.31
 
-# =========================
 # Local AI
-# =========================
 ollama>=0.6.0
 
-# =========================
 # Voice Input
-# =========================
 faster-whisper>=1.0
 sounddevice>=0.4.6
 numpy>=1.26
 
-# =========================
 # Desktop Control
-# =========================
 pyautogui>=0.9.54
 pygetwindow>=0.0.9
 pywinauto>=0.6.8
 psutil>=5.9
 
-# =========================
 # Computer Vision
-# =========================
 opencv-python>=4.10
 ultralytics>=8.3
 
-# =========================
 # Memory & Knowledge
-# =========================
 sentence-transformers>=3.0
 faiss-cpu>=1.8
 
-# =========================
 # Utilities
-# =========================
 python-dotenv>=1.0
 pydantic>=2.8
-=======
->>>>>>> b73e004 (moving to fun part ahahahahahahhahhhahhhahaha( evil laugh 😈))

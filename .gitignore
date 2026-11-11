@@ -1,16 +1,48 @@
+
+# Python cache
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
 .env
+.env.*
+!.env.example
 
+# Logs
 logs/
+*.log
+
+# Models and AI weights
 models/
-
-phoenix_ft/
-phoenix_ft_checkpoints/*
-
 *.pt
 *.pth
 *.bin
 *.safetensors
+*.onnx
 
+# Fine-tuning
+phoenix_ft/
+phoenix_ft_checkpoints/*
+
+# Data
 data/real_data.txt
+
+# IDE and editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
