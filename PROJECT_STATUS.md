@@ -86,6 +86,30 @@ getEventListeners(document.getElementById("voice-listen-btn"))   // ← Referenc
 
 The "Test Voice Output" button is bound *before* the crash, so it is clickable — and it throws, because `speakReply` touches `synth` in the temporal dead zone.
 
+**Verified in a real Chromium page load** against the running server:
+
+```
+[log] voice-helper loaded
+[log] SpeechRecognition = function SpeechRecognition() { [native code] }
+[log] Recognition created: SpeechRecognition
+[log] BUTTON FOUND: button#voice-listen-btn.speak-button
+[exception] ReferenceError: getEventListeners is not defined
+    at http://localhost:5000/:1780:13
+[log] ✅ Avatar Loaded
+```
+
+The GLB still loads because the loader call sits above the crash; everything below line 1780 is dead.
+
+Live DOM probes after the abort confirm the user-visible symptoms:
+
+| Probe | Result |
+|---|---|
+| `#voice-select` option count | **0** (voice list never populated) |
+| `#session-meta` | **`SESSION // 0000`** (fetch below the crash never ran) |
+| click `#speak-test-btn` | **`Uncaught ReferenceError: Cannot access 'synth' before initialization`** |
+| `speechSynthesis.speaking` | `false` — no audio is ever produced |
+| `#loading.hidden` | `true` — the GLB did load and render |
+
 ### B2. Microphone input cannot work as written
 
 `voice-helper.js` accepted `(onResult, onState)` and **ignored both arguments** — no `onresult`, `onerror`, or `onend` handler is attached. Clicking the mic calls `recognition.start()` on the raw object; the browser listens, but no transcript is ever delivered to `sendVoiceMessage`. There is also no toggle guard, so a second click while listening throws `InvalidStateError`.
